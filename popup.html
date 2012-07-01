@@ -1,0 +1,54 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="styles/post.css" type="text/css" />
+	<script src='scripts/jquery-1.6.1.min.js'></script>
+	<script src="scripts/parse.js"></script>
+	<script>
+		
+		function fetch_feed() {
+
+			chrome.extension.sendRequest({'action' : 'fetch_feed', 'url' : 'http://g5line.com/feed/'}, 
+				function(response) {
+					display_stories(response);
+				}
+			);
+		}
+		
+		function display_stories(feed_data) {
+			xmlDoc = $.parseXML(feed_data),
+		    $xml = $(xmlDoc),
+			items = $xml.find("item");
+
+			//$("#popup").html('<img src="images/logo.png" />');
+			items.each(function(index, element) {
+				item='';
+				link=$(element).find('link').text();
+				title=$(element).find('title').text();
+				description=$(element).find('description').text();
+
+				item +='<a href="'+link+'" class="item">'
+							+'<dl>'
+								+'<dt>'+title+'</dt>'
+								+'<dd>'+description+'</dd>'
+							+'</dl>'
+						+'</a>';
+				$('#popup').append(item);
+			});
+		}
+		
+	</script>
+	
+</head>
+<body>
+	
+	<div id="popup">
+		<a href="http://g5line.com/success-stories/%d8%af%d8%b3%d8%aa-%d9%86%d9%88%d8%a7%d8%b2%d8%b4/" class="item"><dl><dt>دست نوازش</dt><dd>جی۵ لاین:&nbsp;روزی معلمی به شاگردانش گفت : چیزی که به آن حس قدردانی دارید را نقاشی کنید.&nbsp;هر یک از بچه ها چیزی کشید. عجیب ترین نقاشی، تصویر یک دست بود. معلم از شاگردش پرسید این [...]</dd></dl></a>
+	</div>
+	<script>
+		$(document).ready(function() {
+			fetch_feed();
+		});
+	</script>
+</body>
+</html>

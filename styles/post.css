@@ -1,0 +1,43 @@
+/* Need to set specific style for .item:hover, #logo, and .tag */
+
+.item:hover, .item:hover a {
+	background:#e1fec7;
+}
+
+
+
+/* No more customizations necessary below this */
+
+body,dl {
+	overflow-x:hidden;
+	margin:0;
+	padding:0;
+	font-family:Tahoma;
+	direction: rtl;
+}
+
+#popup {
+	width:400px;
+	height:400px;
+	overflow-x:hidden;
+}
+.item {
+	width:385px;
+	text-decoration:none;
+	text-align:justify;
+	color:black;
+	padding:7px;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	display: block;
+	border-radius:5px;
+}
+
+dt{
+	font-size:0.9em;
+	font-weight:bold;
+}
+dd{
+	padding:10px 0 0 20px;
+	font-size:0.7em;
+}
