@@ -21,6 +21,12 @@ body,dl {
 	height:400px;
 	overflow-x:hidden;
 }
+
+#logo{
+	float: left;
+	margin: 5px 30px;
+}
+
 .item {
 	width:385px;
 	text-decoration:none;
