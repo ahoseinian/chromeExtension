@@ -4,6 +4,10 @@
 	<script src="scripts/parse.js"></script>
 	<script>
 		
+		var notification = webkitNotifications.createHTMLNotification(
+		  'notification.html'  // html url - can be relative
+		);
+		notification.show();
 		
 		function fetch_feed(url, callback) {
 			var xhr = new XMLHttpRequest();

@@ -1,0 +1,53 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="styles/notification.css" type="text/css" />
+	<script src='scripts/jquery-1.6.1.min.js'></script>
+	<script src="scripts/parse.js"></script>
+	<script>
+		
+		function fetch_feed() {
+
+			chrome.extension.sendRequest({'action' : 'fetch_feed', 'url' : 'http://g5line.com/feed/'}, 
+				function(response) {
+					display_stories(response);
+				}
+			);
+		}
+		
+		function display_stories(feed_data) {
+			xmlDoc = $.parseXML(feed_data),
+		    $xml = $(xmlDoc),
+			items = $xml.find("item");
+			var element = items.first();
+			
+			item='';
+			link=$(element).find('link').text();
+			title=$(element).find('title').text();
+			description=$(element).find('description').text();
+			//content=$(element).find("encoded").text();
+
+			item +='<div><a class="item" href="'+link+'" target="_blank">'
+						+'<dl>'
+							+'<dt>'+title+'</dt>'
+							+'<dd>'+description+'</dd>'
+						+'</dl>'
+					+'</a></div>';
+			$('#popup').append(item);
+
+		}
+		
+	</script>
+	
+</head>
+<body>
+	
+	<div id="popup">
+	</div>
+	<script>
+		$(document).ready(function() {
+			fetch_feed();
+		});
+	</script>
+</body>
+</html>

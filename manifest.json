@@ -9,7 +9,8 @@
   "homepage_url": "http://g5line.com/",
 	"background_page": "background.html",
 	"permissions": [
-	  "http://g5line.com/*"
+	  "http://g5line.com/*",
+    "notifications"
 	],
 	"browser_action": {
     "default_icon": "images/icon.png", 
