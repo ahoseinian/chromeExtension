@@ -1,6 +1,6 @@
 {
   "name": "G5line.com RSS Fetcher",
-  "version": "0.1",
+  "version": "0.1.1",
 
   "description": "Keep up with the latest from G5line.",
   "icons": { "16" : "images/icon.png",
