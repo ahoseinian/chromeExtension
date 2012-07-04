@@ -16,19 +16,24 @@ body,dl {
 	direction: rtl;
 }
 
-#popup {
+#popup{
 	width:400px;
-	height:400px;
 	overflow-x:hidden;
 }
 
 #logo{
-	float: left;
+	position: absolute;
+	top:15px;
+	left: -35px;
 	margin: 5px 30px;
+	-webkit-transform:rotate(-45deg);
 }
 
+.clear{
+	clear: both;
+	height: 30px;
+}
 .item {
-	width:385px;
 	text-decoration:none;
 	text-align:justify;
 	color:black;
@@ -40,8 +45,7 @@ body,dl {
 }
 
 dt{
-	font-size:0.9em;
-	font-weight:bold;
+	font-size:0.8em;
 }
 dd{
 	padding:10px 0 0 20px;

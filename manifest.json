@@ -1,6 +1,6 @@
 {
-  "name": "G5line.com RSS Fetcher",
-  "version": "0.1.1",
+  "name": "G5line.com | هر روز 7 صبح یک فنجان چای روح مهمان ما باشید",
+  "version": "0.1.2",
 
   "description": "Keep up with the latest from G5line.",
   "icons": { "16" : "images/icon.png",
@@ -14,7 +14,7 @@
 	],
 	"browser_action": {
     "default_icon": "images/icon.png", 
-    "default_title": "G5line Notifier",      
+    "default_title": "G5line.com",      
     "default_popup": "popup.html"       
   }
 }
