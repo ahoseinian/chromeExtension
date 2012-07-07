@@ -1,0 +1,1 @@
+## chrome rss notifier extension
