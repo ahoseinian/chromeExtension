@@ -4,11 +4,52 @@
 	<script src="scripts/parse.js"></script>
 	<script>
 		
-		var notification = webkitNotifications.createHTMLNotification(
-		  'notification.html'  // html url - can be relative
-		);
-		notification.show();
+
+
+		function showNotificationAndSetCookie(domain, name){
+					//show notification
+					var notification = webkitNotifications.createHTMLNotification(
+					  'notification.html'  
+					);
+					notification.show();
+
+					//then set today cookie to prevent other shows in today
+		    		var today = String(new Date().getDate());//get todays date
+					chrome.cookies.set({ url: domain, name: name, value: (today), expirationDate: (new Date().getTime()/1000) + (24*3600) });//set today date in a cookie with a 24 hours life time
+
+		}
+
+		function getCookies(domain, name, callback) {
+			//get out cookie from chrome
+		    chrome.cookies.get({"url": domain, "name": name}, function(cookie) {
+		    	if(cookie == null){//if cookie is not set we set it manualy
+		    		showNotificationAndSetCookie(domain,name);
+		    	}
+		    	chrome.cookies.get({"url": domain, "name": name}, function(cookie) {//get the date from cookie that set before
+			        if(callback) {
+			            callback(cookie.value)
+			        }
+		    	});	
+		    });
+		}
+
+
+		/**
+		*this function check if today date is set in cookie (means that we show this extension massage once today)
+		*prevent to show the massage agian
+		*else if this is the frist time that user see this message
+		*show the massage and set the cookie to prevent from next shows in this day
+		*/
+		getCookies("http://g5line.com/", "todayDate", function(date) {
+			if((String(new Date().getDate())) != date)
+				showNotificationAndSetCookie("http://g5line.com/","todayDate");
+		});
 		
+
+					
+
+
+
 		function fetch_feed(url, callback) {
 			var xhr = new XMLHttpRequest();
 		    xhr.onreadystatechange = function(data) {
