@@ -3,6 +3,8 @@
   "version": "0.1.2",
 
   "description": "Keep up with the latest from G5line.",
+  
+  
   "icons": { "16" : "images/icon.png",
  			"48" : "images/48.png",
 			"128" : "images/128.png"},
